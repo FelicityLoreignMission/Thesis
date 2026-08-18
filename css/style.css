@@ -1,10 +1,10 @@
 /* ==================== ROOT & GLOBAL STYLES ==================== */
 :root {
-    --primary-color: #1a5f3a;
-    --primary-dark: #0f3d27;
-    --primary-light: #2d8659;
-    --accent-color: #f39c12;
-    --accent-light: #f5b041;
+    --primary-color: #8b0000;
+    --primary-dark: #660000;
+    --primary-light: #a61a1a;
+    --accent-color: #dc143c;
+    --accent-light: #ff1744;
     --text-dark: #2c3e50;
     --text-light: #7f8c8d;
     --bg-light: #ecf0f1;

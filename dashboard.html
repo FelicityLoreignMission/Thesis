@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - EduLearn</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-wrapper">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h1>EduLearn</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="dashboard.html" class="nav-link active"><span class="icon">📊</span>Dashboard</a></li>
+                <li><a href="modules.html" class="nav-link"><span class="icon">📚</span>Learning Modules</a></li>
+                <li><a href="activities.html" class="nav-link"><span class="icon">🎮</span>Interactive Activities</a></li>
+                <li><a href="resources.html" class="nav-link"><span class="icon">📁</span>Resources</a></li>
+                <li><a href="assessments.html" class="nav-link"><span class="icon">✏️</span>Assessments</a></li>
+                <li><a href="certificates.html" class="nav-link"><span class="icon">🏆</span>Certificates</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <button class="btn btn-logout" onclick="handleLogout()">Logout</button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Header -->
+            <div class="top-header">
+                <div class="header-info">
+                    <h2>Welcome to EduLearn</h2>
+                    <p>Your interactive learning platform</p>
+                </div>
+                <div class="user-profile">
+                    <span id="userName">Student</span>
+                    <div class="avatar">👤</div>
+                </div>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Progress Section -->
+                <section class="progress-section">
+                    <h3>Your Progress</h3>
+                    <div class="progress-card">
+                        <div class="progress-info">
+                            <span class="progress-label">Overall Progress</span>
+                            <span class="progress-percent" id="progressPercent">35%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 35%"></div>
+                        </div>
+                        <div class="progress-stats">
+                            <div class="stat">
+                                <span class="stat-label">Modules Completed</span>
+                                <span class="stat-value">3/8</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Activities Done</span>
+                                <span class="stat-value">12/20</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Badges Earned</span>
+                                <span class="stat-value">5</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Quick Access Section -->
+                <section class="quick-access">
+                    <h3>Quick Access</h3>
+                    <div class="quick-cards">
+                        <div class="quick-card" onclick="navigateTo('modules.html')">
+                            <div class="card-icon">📚</div>
+                            <h4>Start Learning</h4>
+                            <p>Continue with modules</p>
+                        </div>
+                        <div class="quick-card" onclick="navigateTo('activities.html')">
+                            <div class="card-icon">🎮</div>
+                            <h4>Practice Activities</h4>
+                            <p>Interactive exercises</p>
+                        </div>
+                        <div class="quick-card" onclick="navigateTo('resources.html')">
+                            <div class="card-icon">📁</div>
+                            <h4>Resources</h4>
+                            <p>Study materials</p>
+                        </div>
+                        <div class="quick-card" onclick="navigateTo('assessments.html')">
+                            <div class="card-icon">✏️</div>
+                            <h4>Take Quiz</h4>
+                            <p>Test your knowledge</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Recent Activity -->
+                <section class="recent-activity">
+                    <h3>Recent Activity</h3>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <span class="activity-icon">✅</span>
+                            <div class="activity-details">
+                                <p class="activity-title">Completed Module 3: Advanced Concepts</p>
+                                <p class="activity-time">2 hours ago</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-icon">🎮</span>
+                            <div class="activity-details">
+                                <p class="activity-title">Scored 95% on Safety Quiz</p>
+                                <p class="activity-time">Yesterday</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-icon">📚</span>
+                            <div class="activity-details">
+                                <p class="activity-title">Started Module 4: Practical Application</p>
+                                <p class="activity-time">3 days ago</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-icon">🏆</span>
+                            <div class="activity-details">
+                                <p class="activity-title">Earned Badge: Quick Learner</p>
+                                <p class="activity-time">1 week ago</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

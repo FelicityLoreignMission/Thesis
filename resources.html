@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - EduLearn</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-wrapper">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h1>EduLearn</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="dashboard.html" class="nav-link"><span class="icon">📊</span>Dashboard</a></li>
+                <li><a href="modules.html" class="nav-link"><span class="icon">📚</span>Learning Modules</a></li>
+                <li><a href="activities.html" class="nav-link"><span class="icon">🎮</span>Interactive Activities</a></li>
+                <li><a href="resources.html" class="nav-link active"><span class="icon">📁</span>Resources</a></li>
+                <li><a href="assessments.html" class="nav-link"><span class="icon">✏️</span>Assessments</a></li>
+                <li><a href="certificates.html" class="nav-link"><span class="icon">🏆</span>Certificates</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <button class="btn btn-logout" onclick="handleLogout()">Logout</button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Header -->
+            <div class="top-header">
+                <div class="header-info">
+                    <h2>Learning Resources</h2>
+                    <p>Download and explore study materials, guides, and references</p>
+                </div>
+            </div>
+
+            <!-- Search and Filter -->
+            <div class="content-controls">
+                <div class="search-bar">
+                    <input type="text" id="searchResources" placeholder="Search resources..." onkeyup="filterResources()">
+                </div>
+                <div class="filter-controls">
+                    <select onchange="filterByType(this.value)">
+                        <option value="all">All Types</option>
+                        <option value="pdf">PDF Documents</option>
+                        <option value="video">Videos</option>
+                        <option value="ebook">E-Books</option>
+                        <option value="spreadsheet">Spreadsheets</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Resources Grid -->
+            <div class="resources-container">
+                <!-- PDF Resources -->
+                <div class="resource-section">
+                    <h3>📄 PDF Documents</h3>
+                    <div class="resource-grid">
+                        <div class="resource-card">
+                            <div class="resource-icon">📕</div>
+                            <h4>Safety Guidelines Handbook</h4>
+                            <p class="resource-meta">2.5 MB • PDF</p>
+                            <p class="resource-desc">Complete guide to workplace safety standards</p>
+                            <div class="resource-actions">
+                                <button class="btn btn-small btn-primary" onclick="downloadResource('safety-handbook')">Download</button>
+                                <button class="btn btn-small btn-secondary" onclick="viewResource('safety-handbook')">Preview</button>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-icon">📗</div>
+                            <h4>Equipment Manual</h4>
+                            <p class="resource-meta">1.8 MB • PDF</p>
+                            <p class="resource-desc">Detailed guide for all industrial equipment</p>
+                            <div class="resource-actions">
+                                <button class="btn btn-small btn-primary" onclick="downloadResource('equipment-manual')">Download</button>
+                                <button class="btn btn-small btn-secondary" onclick="viewResource('equipment-manual')">Preview</button>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-icon">📙</div>
+                            <h4>Emergency Procedures</h4>
+                            <p class="resource-meta">0.9 MB • PDF</p>
+                            <p class="resource-desc">Step-by-step emergency response procedures</p>
+                            <div class="resource-actions">
+                                <button class="btn btn-small btn-primary" onclick="downloadResource('emergency-proc')">Download</button>
+                                <button class="btn btn-small btn-secondary" onclick="viewResource('emergency-proc')">Preview</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Resources -->
+                <div class="resource-section">
+                    <h3>🎥 Video Tutorials</h3>
+                    <div class="resource-grid">
+                        <div class="resource-card">
+                            <div class="resource-icon">▶️</div>
+                            <h4>Safety First: Introduction</h4>
+                            <p class="resource-meta">12:45 • Video</p>
+                            <p class="resource-desc">Get started with safety basics</p>
+                            <div class="resource-actions">
+                                <button class="btn btn-small btn-primary" onclick="watchVideo('safety-intro')">Watch</button>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-icon">▶️</div>
+                            <h4>Equipment Setup Guide</h4>
+                            <p class="resource-meta">18:30 • Video</p>
+                            <p class="resource-desc">Learn proper equipment setup procedures</p>
+                            <div class="resource-actions">
+                                <button class="btn btn-small btn-primary" onclick="watchVideo('equipment-setup')">Watch</button>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-icon">▶️</div>
+                            <h4>Emergency Response Training</h4>
+                            <p class="resource-meta">25:15 • Video</p>
+                            <p class="resource-desc">Comprehensive emergency response training</p>
+                            <div class="resource-actions">
+                                <button class="btn btn-small btn-primary" onclick="watchVideo('emergency-training')">Watch</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- E-Books -->
+                <div class="resource-section">
+                    <h3>📚 E-Books</h3>
+                    <div class="resource-grid">
+                        <div class="resource-card">
+                            <div class="resource-icon">📖</div>
+                            <h4>Industrial Safety Essentials</h4>
+                            <p class="resource-meta">156 pages • E-Book</p>
+                            <p class="resource-desc">Essential concepts in industrial safety</p>
+                            <div class="resource-actions">
+                                <button class="btn btn-small btn-primary" onclick="readEbook('safety-essentials')">Read Online</button>
+                                <button class="btn btn-small btn-secondary" onclick="downloadResource('safety-essentials')">Download</button>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-icon">📖</div>
+                            <h4>Best Practices in Workplace Management</h4>
+                            <p class="resource-meta">234 pages • E-Book</p>
+                            <p class="resource-desc">Management strategies and best practices</p>
+                            <div class="resource-actions">
+                                <button class="btn btn-small btn-primary" onclick="readEbook('management-practices')">Read Online</button>
+                                <button class="btn btn-small btn-secondary" onclick="downloadResource('management-practices')">Download</button>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-icon">📖</div>
+                            <h4>Advanced Safety Protocols</h4>
+                            <p class="resource-meta">189 pages • E-Book</p>
+                            <p class="resource-desc">Advanced protocols for expert-level safety</p>
+                            <div class="resource-actions">
+                                <button class="btn btn-small btn-primary" onclick="readEbook('advanced-protocols')">Read Online</button>
+                                <button class="btn btn-small btn-secondary" onclick="downloadResource('advanced-protocols')">Download</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Checklists & Templates -->
+                <div class="resource-section">
+                    <h3>✓ Checklists & Templates</h3>
+                    <div class="resource-grid">
+                        <div class="resource-card">
+                            <div class="resource-icon">✓</div>
+                            <h4>Daily Safety Checklist</h4>
+                            <p class="resource-meta">Excel • Template</p>
+                            <p class="resource-desc">Daily workplace safety checklist</p>
+                            <div class="resource-actions">
+                                <button class="btn btn-small btn-primary" onclick="downloadResource('daily-checklist')">Download</button>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-icon">✓</div>
+                            <h4>Risk Assessment Form</h4>
+                            <p class="resource-meta">Word • Template</p>
+                            <p class="resource-desc">Standardized risk assessment template</p>
+                            <div class="resource-actions">
+                                <button class="btn btn-small btn-primary" onclick="downloadResource('risk-form')">Download</button>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-icon">✓</div>
+                            <h4>Incident Report Form</h4>
+                            <p class="resource-meta">PDF • Template</p>
+                            <p class="resource-desc">Official incident reporting template</p>
+                            <div class="resource-actions">
+                                <button class="btn btn-small btn-primary" onclick="downloadResource('incident-form')">Download</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

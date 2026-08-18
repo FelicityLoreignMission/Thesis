@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificates - EduLearn</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-wrapper">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h1>EduLearn</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="dashboard.html" class="nav-link"><span class="icon">📊</span>Dashboard</a></li>
+                <li><a href="modules.html" class="nav-link"><span class="icon">📚</span>Learning Modules</a></li>
+                <li><a href="activities.html" class="nav-link"><span class="icon">🎮</span>Interactive Activities</a></li>
+                <li><a href="resources.html" class="nav-link"><span class="icon">📁</span>Resources</a></li>
+                <li><a href="assessments.html" class="nav-link"><span class="icon">✏️</span>Assessments</a></li>
+                <li><a href="certificates.html" class="nav-link active"><span class="icon">🏆</span>Certificates</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <button class="btn btn-logout" onclick="handleLogout()">Logout</button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Header -->
+            <div class="top-header">
+                <div class="header-info">
+                    <h2>Certificates & Achievements</h2>
+                    <p>Showcase your accomplishments and credentials</p>
+                </div>
+            </div>
+
+            <!-- Certificates Section -->
+            <section class="certificates-section">
+                <h3>Earned Certificates</h3>
+                <div class="certificates-grid">
+                    <div class="certificate-card">
+                        <div class="cert-badge">🏅</div>
+                        <h4>Completion Certificate</h4>
+                        <p class="cert-program">Module 1: Introduction to Basics</p>
+                        <p class="cert-date">Issued: June 15, 2024</p>
+                        <div class="cert-actions">
+                            <button class="btn btn-primary btn-small" onclick="viewCertificate(1)">View</button>
+                            <button class="btn btn-secondary btn-small" onclick="downloadCertificate(1)">Download</button>
+                        </div>
+                    </div>
+
+                    <div class="certificate-card">
+                        <div class="cert-badge">🥇</div>
+                        <h4>Completion Certificate</h4>
+                        <p class="cert-program">Module 2: Core Concepts</p>
+                        <p class="cert-date">Issued: June 22, 2024</p>
+                        <div class="cert-actions">
+                            <button class="btn btn-primary btn-small" onclick="viewCertificate(2)">View</button>
+                            <button class="btn btn-secondary btn-small" onclick="downloadCertificate(2)">Download</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Achievements/Badges Section -->
+            <section class="achievements-section">
+                <h3>Badges & Achievements</h3>
+                <div class="badges-grid">
+                    <div class="badge-card earned">
+                        <div class="badge-icon">🚀</div>
+                        <h4>Quick Start</h4>
+                        <p>Complete first module in first week</p>
+                        <span class="earned-date">Earned: June 8</span>
+                    </div>
+
+                    <div class="badge-card earned">
+                        <div class="badge-icon">⭐</div>
+                        <h4>Perfect Score</h4>
+                        <p>Score 100% on any assessment</p>
+                        <span class="earned-date">Earned: June 20</span>
+                    </div>
+
+                    <div class="badge-card earned">
+                        <div class="badge-icon">🔥</div>
+                        <h4>Streak Master</h4>
+                        <p>Complete 7 activities in 7 days</p>
+                        <span class="earned-date">Earned: July 1</span>
+                    </div>
+
+                    <div class="badge-card earned">
+                        <div class="badge-icon">💡</div>
+                        <h4>Knowledge Seeker</h4>
+                        <p>Complete 3 modules</p>
+                        <span class="earned-date">Earned: July 5</span>
+                    </div>
+
+                    <div class="badge-card earned">
+                        <div class="badge-icon">🎯</div>
+                        <h4>Accuracy Expert</h4>
+                        <p>Average 90% or higher across assessments</p>
+                        <span class="earned-date">Earned: July 10</span>
+                    </div>
+
+                    <div class="badge-card locked">
+                        <div class="badge-icon">🔒</div>
+                        <h4>Master Scholar</h4>
+                        <p>Complete all 6 modules with 85%+ scores</p>
+                        <span class="locked-text">2 modules to go</span>
+                    </div>
+
+                    <div class="badge-card locked">
+                        <div class="badge-icon">🔒</div>
+                        <h4>Certified Expert</h4>
+                        <p>Pass final certification exam with 90%+</p>
+                        <span class="locked-text">Not yet eligible</span>
+                    </div>
+
+                    <div class="badge-card locked">
+                        <div class="badge-icon">🔒</div>
+                        <h4>Hall of Fame</h4>
+                        <p>Maintain top 10 ranking in leaderboard</p>
+                        <span class="locked-text">Unlock achievement</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Progress to Certification -->
+            <section class="certification-progress">
+                <h3>Path to Final Certification</h3>
+                <div class="cert-progress-card">
+                    <div class="progress-steps">
+                        <div class="step completed">
+                            <div class="step-number">1</div>
+                            <p>Complete Module 1</p>
+                            <span class="step-status">✓ Done</span>
+                        </div>
+                        <div class="step completed">
+                            <div class="step-number">2</div>
+                            <p>Complete Module 2</p>
+                            <span class="step-status">✓ Done</span>
+                        </div>
+                        <div class="step in-progress">
+                            <div class="step-number">3</div>
+                            <p>Complete Module 3</p>
+                            <span class="step-status">📍 In Progress</span>
+                        </div>
+                        <div class="step pending">
+                            <div class="step-number">4</div>
+                            <p>Complete 4 More Modules</p>
+                            <span class="step-status">⏳ Pending</span>
+                        </div>
+                        <div class="step pending">
+                            <div class="step-number">5</div>
+                            <p>Pass Final Exam</p>
+                            <span class="step-status">⏳ Pending</span>
+                        </div>
+                        <div class="step pending">
+                            <div class="step-number">6</div>
+                            <p>Receive Certificate</p>
+                            <span class="step-status">⏳ Pending</span>
+                        </div>
+                    </div>
+                    <div class="cert-estimate">
+                        <p><strong>Estimated Completion:</strong> August 2024</p>
+                        <p><strong>Completion Rate:</strong> 33% of program completed</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

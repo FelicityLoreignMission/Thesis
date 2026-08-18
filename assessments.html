@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessments - EduLearn</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-wrapper">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h1>EduLearn</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="dashboard.html" class="nav-link"><span class="icon">📊</span>Dashboard</a></li>
+                <li><a href="modules.html" class="nav-link"><span class="icon">📚</span>Learning Modules</a></li>
+                <li><a href="activities.html" class="nav-link"><span class="icon">🎮</span>Interactive Activities</a></li>
+                <li><a href="resources.html" class="nav-link"><span class="icon">📁</span>Resources</a></li>
+                <li><a href="assessments.html" class="nav-link active"><span class="icon">✏️</span>Assessments</a></li>
+                <li><a href="certificates.html" class="nav-link"><span class="icon">🏆</span>Certificates</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <button class="btn btn-logout" onclick="handleLogout()">Logout</button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Header -->
+            <div class="top-header">
+                <div class="header-info">
+                    <h2>Assessments & Quizzes</h2>
+                    <p>Evaluate your knowledge and progress</p>
+                </div>
+            </div>
+
+            <!-- Assessment Summary -->
+            <section class="assessment-summary">
+                <div class="summary-card">
+                    <h3>Your Assessment Performance</h3>
+                    <div class="performance-grid">
+                        <div class="perf-item">
+                            <span class="perf-label">Average Score</span>
+                            <span class="perf-value">87%</span>
+                        </div>
+                        <div class="perf-item">
+                            <span class="perf-label">Quizzes Completed</span>
+                            <span class="perf-value">12/18</span>
+                        </div>
+                        <div class="perf-item">
+                            <span class="perf-label">Time Spent</span>
+                            <span class="perf-value">8.5 hrs</span>
+                        </div>
+                        <div class="perf-item">
+                            <span class="perf-label">Certification Ready</span>
+                            <span class="perf-value">Yes</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Assessments Grid -->
+            <div class="assessments-container">
+                <div class="assessment-card completed">
+                    <div class="assessment-header">
+                        <span class="assessment-badge completed">Completed</span>
+                        <span class="score-badge">92/100</span>
+                    </div>
+                    <h3>Module 1: Basics Assessment</h3>
+                    <p class="assessment-desc">Fundamental concepts evaluation</p>
+                    <div class="assessment-details">
+                        <span>✓ Passed</span>
+                        <span>|</span>
+                        <span>15 questions</span>
+                        <span>|</span>
+                        <span>Completed on: June 15</span>
+                    </div>
+                    <div class="assessment-actions">
+                        <button class="btn btn-secondary btn-small" onclick="reviewAssessment(1)">Review Answers</button>
+                        <button class="btn btn-secondary btn-small" onclick="retakeAssessment(1)">Retake</button>
+                    </div>
+                </div>
+
+                <div class="assessment-card completed">
+                    <div class="assessment-header">
+                        <span class="assessment-badge completed">Completed</span>
+                        <span class="score-badge">88/100</span>
+                    </div>
+                    <h3>Module 2: Core Concepts Assessment</h3>
+                    <p class="assessment-desc">Intermediate level evaluation</p>
+                    <div class="assessment-details">
+                        <span>✓ Passed</span>
+                        <span>|</span>
+                        <span>20 questions</span>
+                        <span>|</span>
+                        <span>Completed on: June 22</span>
+                    </div>
+                    <div class="assessment-actions">
+                        <button class="btn btn-secondary btn-small" onclick="reviewAssessment(2)">Review Answers</button>
+                        <button class="btn btn-secondary btn-small" onclick="retakeAssessment(2)">Retake</button>
+                    </div>
+                </div>
+
+                <div class="assessment-card in-progress">
+                    <div class="assessment-header">
+                        <span class="assessment-badge in-progress">In Progress</span>
+                        <span class="score-badge">-</span>
+                    </div>
+                    <h3>Module 3: Advanced Techniques Assessment</h3>
+                    <p class="assessment-desc">Advanced level evaluation - 65% complete</p>
+                    <div class="assessment-details">
+                        <span>📍 In Progress</span>
+                        <span>|</span>
+                        <span>25 questions</span>
+                        <span>|</span>
+                        <span>Time left: 15 mins</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 65%"></div>
+                    </div>
+                    <div class="assessment-actions">
+                        <button class="btn btn-primary btn-small" onclick="continueAssessment(3)">Continue Quiz</button>
+                        <button class="btn btn-secondary btn-small" onclick="exitAssessment(3)">Exit</button>
+                    </div>
+                </div>
+
+                <div class="assessment-card pending">
+                    <div class="assessment-header">
+                        <span class="assessment-badge pending">Not Started</span>
+                        <span class="score-badge">-</span>
+                    </div>
+                    <h3>Module 4: Practical Application Assessment</h3>
+                    <p class="assessment-desc">Real-world scenario evaluation</p>
+                    <div class="assessment-details">
+                        <span>⏳ Not Started</span>
+                        <span>|</span>
+                        <span>30 questions</span>
+                        <span>|</span>
+                        <span>Est. time: 45 mins</span>
+                    </div>
+                    <div class="assessment-actions">
+                        <button class="btn btn-primary btn-small" onclick="startAssessment(4)">Start Quiz</button>
+                    </div>
+                </div>
+
+                <div class="assessment-card locked">
+                    <div class="assessment-header">
+                        <span class="assessment-badge locked">Locked</span>
+                        <span class="score-badge">🔒</span>
+                    </div>
+                    <h3>Final Certification Exam</h3>
+                    <p class="assessment-desc">Comprehensive examination for certification</p>
+                    <div class="assessment-details">
+                        <span>🔒 Locked</span>
+                        <span>|</span>
+                        <span>50 questions</span>
+                        <span>|</span>
+                        <span>Unlocks after Module 5</span>
+                    </div>
+                    <div class="assessment-actions">
+                        <button class="btn btn-disabled btn-small" disabled>Complete Previous Assessments</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

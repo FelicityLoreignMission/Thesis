@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Activities - EduLearn</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-wrapper">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h1>EduLearn</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="dashboard.html" class="nav-link"><span class="icon">📊</span>Dashboard</a></li>
+                <li><a href="modules.html" class="nav-link"><span class="icon">📚</span>Learning Modules</a></li>
+                <li><a href="activities.html" class="nav-link active"><span class="icon">🎮</span>Interactive Activities</a></li>
+                <li><a href="resources.html" class="nav-link"><span class="icon">📁</span>Resources</a></li>
+                <li><a href="assessments.html" class="nav-link"><span class="icon">✏️</span>Assessments</a></li>
+                <li><a href="certificates.html" class="nav-link"><span class="icon">🏆</span>Certificates</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <button class="btn btn-logout" onclick="handleLogout()">Logout</button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Header -->
+            <div class="top-header">
+                <div class="header-info">
+                    <h2>Interactive Activities</h2>
+                    <p>Practice and reinforce your learning with engaging activities</p>
+                </div>
+            </div>
+
+            <!-- Activities Grid -->
+            <div class="activities-container">
+                <!-- Activity 1: Hazard Hunt -->
+                <div class="activity-card">
+                    <div class="activity-header">
+                        <div class="activity-icon large">⚠️</div>
+                        <span class="difficulty-badge">Beginner</span>
+                    </div>
+                    <h3>Hazard Hunt</h3>
+                    <p class="activity-desc">Identify and locate safety hazards in realistic scenarios</p>
+                    <div class="activity-stats">
+                        <span class="stat">🎯 Accuracy: 88%</span>
+                        <span class="stat">⏱️ 5 mins avg</span>
+                    </div>
+                    <div class="activity-progress">
+                        <span class="progress-label">Completed: 4/5</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="startActivity('hazard-hunt')">Continue Activity</button>
+                </div>
+
+                <!-- Activity 2: PPE Matching -->
+                <div class="activity-card">
+                    <div class="activity-header">
+                        <div class="activity-icon large">🥾</div>
+                        <span class="difficulty-badge">Beginner</span>
+                    </div>
+                    <h3>PPE Matching</h3>
+                    <p class="activity-desc">Match personal protective equipment to correct hazards</p>
+                    <div class="activity-stats">
+                        <span class="stat">🎯 Accuracy: 92%</span>
+                        <span class="stat">⏱️ 3 mins avg</span>
+                    </div>
+                    <div class="activity-progress">
+                        <span class="progress-label">Completed: 5/5</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-secondary" onclick="viewResults('ppe-matching')">View Results</button>
+                </div>
+
+                <!-- Activity 3: Emergency Response Scenario -->
+                <div class="activity-card">
+                    <div class="activity-header">
+                        <div class="activity-icon large">🚑</div>
+                        <span class="difficulty-badge">Intermediate</span>
+                    </div>
+                    <h3>Emergency Response</h3>
+                    <p class="activity-desc">Make critical decisions in emergency situations</p>
+                    <div class="activity-stats">
+                        <span class="stat">🎯 Accuracy: 75%</span>
+                        <span class="stat">⏱️ 10 mins avg</span>
+                    </div>
+                    <div class="activity-progress">
+                        <span class="progress-label">Completed: 2/5</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 40%"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="startActivity('emergency-response')">Continue Activity</button>
+                </div>
+
+                <!-- Activity 4: Tool Identification -->
+                <div class="activity-card">
+                    <div class="activity-header">
+                        <div class="activity-icon large">🔧</div>
+                        <span class="difficulty-badge">Intermediate</span>
+                    </div>
+                    <h3>Tool Identification</h3>
+                    <p class="activity-desc">Learn to identify tools and their proper usage</p>
+                    <div class="activity-stats">
+                        <span class="stat">🎯 Accuracy: 85%</span>
+                        <span class="stat">⏱️ 8 mins avg</span>
+                    </div>
+                    <div class="activity-progress">
+                        <span class="progress-label">Completed: 3/5</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 60%"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="startActivity('tool-identification')">Continue Activity</button>
+                </div>
+
+                <!-- Activity 5: Safety Quiz -->
+                <div class="activity-card">
+                    <div class="activity-header">
+                        <div class="activity-icon large">❓</div>
+                        <span class="difficulty-badge">Intermediate</span>
+                    </div>
+                    <h3>Safety Quiz</h3>
+                    <p class="activity-desc">Test your safety knowledge with comprehensive quizzes</p>
+                    <div class="activity-stats">
+                        <span class="stat">🎯 Score: 95/100</span>
+                        <span class="stat">⏱️ 15 mins</span>
+                    </div>
+                    <div class="activity-progress">
+                        <span class="progress-label">Completed: 1/5</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 20%"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-secondary" onclick="viewResults('safety-quiz')">View Results</button>
+                </div>
+
+                <!-- Activity 6: Workplace Simulation -->
+                <div class="activity-card">
+                    <div class="activity-header">
+                        <div class="activity-icon large">🏭</div>
+                        <span class="difficulty-badge">Advanced</span>
+                    </div>
+                    <h3>Workplace Simulation</h3>
+                    <p class="activity-desc">Experience a realistic workplace environment simulation</p>
+                    <div class="activity-stats">
+                        <span class="stat">🎯 Score: N/A</span>
+                        <span class="stat">⏱️ 20 mins avg</span>
+                    </div>
+                    <div class="activity-progress">
+                        <span class="progress-label">Completed: 0/2</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="startActivity('workplace-sim')">Start Activity</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

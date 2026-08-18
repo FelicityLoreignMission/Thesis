@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Modules - EduLearn</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-wrapper">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h1>EduLearn</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="dashboard.html" class="nav-link"><span class="icon">📊</span>Dashboard</a></li>
+                <li><a href="modules.html" class="nav-link active"><span class="icon">📚</span>Learning Modules</a></li>
+                <li><a href="activities.html" class="nav-link"><span class="icon">🎮</span>Interactive Activities</a></li>
+                <li><a href="resources.html" class="nav-link"><span class="icon">📁</span>Resources</a></li>
+                <li><a href="assessments.html" class="nav-link"><span class="icon">✏️</span>Assessments</a></li>
+                <li><a href="certificates.html" class="nav-link"><span class="icon">🏆</span>Certificates</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <button class="btn btn-logout" onclick="handleLogout()">Logout</button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Header -->
+            <div class="top-header">
+                <div class="header-info">
+                    <h2>Learning Modules</h2>
+                    <p>Master new skills with our comprehensive courses</p>
+                </div>
+            </div>
+
+            <!-- Filter and Sort -->
+            <div class="content-controls">
+                <div class="search-bar">
+                    <input type="text" id="searchModules" placeholder="Search modules..." onkeyup="filterModules()">
+                </div>
+                <div class="sort-controls">
+                    <select onchange="sortModules(this.value)">
+                        <option value="recent">Most Recent</option>
+                        <option value="progress">By Progress</option>
+                        <option value="difficulty">By Difficulty</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Modules Grid -->
+            <div class="modules-container">
+                <div class="module-card completed">
+                    <div class="module-header">
+                        <span class="module-badge">Completed</span>
+                        <span class="module-icon">📚</span>
+                    </div>
+                    <h3>Module 1: Introduction to Basics</h3>
+                    <p class="module-desc">Learn the fundamental concepts and get started</p>
+                    <div class="module-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%"></div>
+                        </div>
+                        <span class="progress-text">100% Complete</span>
+                    </div>
+                    <div class="module-lessons">
+                        <span>5 Lessons • 2 hrs</span>
+                    </div>
+                    <button class="btn btn-secondary" onclick="viewModule(1)">Review Module</button>
+                </div>
+
+                <div class="module-card completed">
+                    <div class="module-header">
+                        <span class="module-badge">Completed</span>
+                        <span class="module-icon">📚</span>
+                    </div>
+                    <h3>Module 2: Core Concepts</h3>
+                    <p class="module-desc">Dive deeper into core principles and theories</p>
+                    <div class="module-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%"></div>
+                        </div>
+                        <span class="progress-text">100% Complete</span>
+                    </div>
+                    <div class="module-lessons">
+                        <span>6 Lessons • 3 hrs</span>
+                    </div>
+                    <button class="btn btn-secondary" onclick="viewModule(2)">Review Module</button>
+                </div>
+
+                <div class="module-card in-progress">
+                    <div class="module-header">
+                        <span class="module-badge in-progress">In Progress</span>
+                        <span class="module-icon">📚</span>
+                    </div>
+                    <h3>Module 3: Advanced Techniques</h3>
+                    <p class="module-desc">Master advanced strategies and applications</p>
+                    <div class="module-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%"></div>
+                        </div>
+                        <span class="progress-text">65% Complete</span>
+                    </div>
+                    <div class="module-lessons">
+                        <span>7 Lessons • 4 hrs</span>
+                    </div>
+                    <button class="btn btn-primary" onclick="viewModule(3)">Continue Learning</button>
+                </div>
+
+                <div class="module-card locked">
+                    <div class="module-header">
+                        <span class="module-badge">Locked</span>
+                        <span class="module-icon">🔒</span>
+                    </div>
+                    <h3>Module 4: Practical Application</h3>
+                    <p class="module-desc">Real-world scenarios and case studies</p>
+                    <div class="module-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-text">Not Started</span>
+                    </div>
+                    <div class="module-lessons">
+                        <span>8 Lessons • 5 hrs</span>
+                    </div>
+                    <button class="btn btn-disabled" disabled>Complete Module 3 to Unlock</button>
+                </div>
+
+                <div class="module-card locked">
+                    <div class="module-header">
+                        <span class="module-badge">Locked</span>
+                        <span class="module-icon">🔒</span>
+                    </div>
+                    <h3>Module 5: Expert Level</h3>
+                    <p class="module-desc">Advanced topics for mastery</p>
+                    <div class="module-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-text">Not Started</span>
+                    </div>
+                    <div class="module-lessons">
+                        <span>10 Lessons • 6 hrs</span>
+                    </div>
+                    <button class="btn btn-disabled" disabled>Complete Previous Modules to Unlock</button>
+                </div>
+
+                <div class="module-card locked">
+                    <div class="module-header">
+                        <span class="module-badge">Locked</span>
+                        <span class="module-icon">🔒</span>
+                    </div>
+                    <h3>Module 6: Capstone Project</h3>
+                    <p class="module-desc">Demonstrate your skills in a comprehensive project</p>
+                    <div class="module-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-text">Not Started</span>
+                    </div>
+                    <div class="module-lessons">
+                        <span>Comprehensive • 8 hrs</span>
+                    </div>
+                    <button class="btn btn-disabled" disabled>Complete All Modules to Access</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

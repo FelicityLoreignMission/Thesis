@@ -5,6 +5,69 @@ function navigateTo(page) {
     window.location.href = page;
 }
 
+// Check if user is logged in
+function checkAuth() {
+    const currentUser = localStorage.getItem('currentUser');
+
+    if (!currentUser) {
+        if (!window.location.pathname.endsWith('index.html')) {
+            window.location.href = 'index.html';
+        }
+        return;
+    }
+
+    const user = JSON.parse(currentUser);
+    const userNameElement = document.getElementById('userName');
+    if (userNameElement) {
+        userNameElement.textContent = user.name || 'User';
+    }
+}
+
+// Show confirmation modal for logout
+function showLogoutPrompt() {
+    const existingModal = document.getElementById('logoutModal');
+    if (existingModal) {
+        existingModal.remove();
+    }
+
+    const modal = document.createElement('div');
+    modal.id = 'logoutModal';
+    modal.className = 'logout-modal-overlay';
+    modal.innerHTML = `
+        <div class="logout-modal">
+            <p>Do you want to save your account?</p>
+            <div class="logout-modal-actions">
+                <button type="button" class="btn btn-secondary logout-yes">Yes</button>
+                <button type="button" class="btn btn-primary logout-no">No</button>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    const yesButton = modal.querySelector('.logout-yes');
+    const noButton = modal.querySelector('.logout-no');
+
+    yesButton.addEventListener('click', () => {
+        localStorage.setItem('rememberUser', 'true');
+        modal.remove();
+        window.location.href = 'index.html';
+    });
+
+    noButton.addEventListener('click', () => {
+        localStorage.removeItem('currentUser');
+        localStorage.removeItem('rememberUser');
+        modal.remove();
+        window.location.href = 'index.html';
+    });
+}
+
+function handleLogout() {
+    showLogoutPrompt();
+}
+
+window.addEventListener('DOMContentLoaded', checkAuth);
+
 // ==================== DASHBOARD FUNCTIONS ====================
 
 function viewModule(moduleId) {

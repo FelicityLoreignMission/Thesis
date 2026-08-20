@@ -133,12 +133,51 @@ function checkAuth() {
     }
 }
 
+// Show a custom logout confirmation with save-account options
+function showLogoutPrompt() {
+    const existingModal = document.getElementById('logoutModal');
+    if (existingModal) {
+        existingModal.remove();
+    }
+
+    const modal = document.createElement('div');
+    modal.id = 'logoutModal';
+    modal.className = 'logout-modal-overlay';
+    modal.innerHTML = `
+        <div class="logout-modal">
+            <p>Do you want to save your account?</p>
+            <div class="logout-modal-actions">
+                <button type="button" class="btn btn-secondary logout-yes">Yes</button>
+                <button type="button" class="btn btn-primary logout-no">No</button>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    const yesButton = modal.querySelector('.logout-yes');
+    const noButton = modal.querySelector('.logout-no');
+
+    yesButton.addEventListener('click', () => {
+        const currentUser = localStorage.getItem('currentUser');
+        if (currentUser) {
+            localStorage.setItem('rememberUser', 'true');
+        }
+        modal.remove();
+        window.location.href = 'index.html';
+    });
+
+    noButton.addEventListener('click', () => {
+        localStorage.removeItem('currentUser');
+        localStorage.removeItem('rememberUser');
+        modal.remove();
+        window.location.href = 'index.html';
+    });
+}
+
 // Logout function
 function handleLogout() {
-    if (confirm('Are you sure you want to logout?')) {
-        localStorage.removeItem('currentUser');
-        window.location.href = 'index.html';
-    }
+    showLogoutPrompt();
 }
 
 // Run auth check on page load

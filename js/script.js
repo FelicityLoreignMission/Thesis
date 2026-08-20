@@ -5,6 +5,11 @@ function navigateTo(page) {
     window.location.href = page;
 }
 
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
 // Check if user is logged in
 function checkAuth() {
     const currentUser = localStorage.getItem('currentUser');
@@ -20,6 +25,20 @@ function checkAuth() {
     const userNameElement = document.getElementById('userName');
     if (userNameElement) {
         userNameElement.textContent = user.name || 'User';
+    }
+
+    const avatarElement = document.getElementById('userAvatar');
+    if (avatarElement) {
+        const avatar = user.avatar || '';
+        if (avatar) {
+            avatarElement.style.backgroundImage = `url('${avatar}')`;
+            avatarElement.style.backgroundSize = 'cover';
+            avatarElement.style.backgroundPosition = 'center';
+            avatarElement.textContent = '';
+        } else {
+            avatarElement.style.backgroundImage = 'none';
+            avatarElement.textContent = '👤';
+        }
     }
 }
 
@@ -64,6 +83,153 @@ function showLogoutPrompt() {
 
 function handleLogout() {
     showLogoutPrompt();
+}
+
+function openProfileModal() {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+    if (!currentUser) {
+        window.location.href = 'index.html';
+        return;
+    }
+
+    const users = JSON.parse(localStorage.getItem('users') || '{}');
+    const existingUser = users[currentUser.email] || {};
+
+    const existingModal = document.getElementById('profileModal');
+    if (existingModal) {
+        existingModal.remove();
+    }
+
+    const avatarPreview = existingUser.avatar || currentUser.avatar || '';
+
+    const modal = document.createElement('div');
+    modal.id = 'profileModal';
+    modal.className = 'logout-modal-overlay';
+    modal.innerHTML = `
+        <div class="profile-modal">
+            <h3>Edit Profile</h3>
+            <div class="profile-form">
+                <div class="profile-avatar-preview-wrap">
+                    <div class="profile-avatar-preview" id="profileAvatarPreview" style="background-image: ${avatarPreview ? `url('${avatarPreview}')` : 'none'}; background-size: cover; background-position: center;">${avatarPreview ? '' : '👤'}</div>
+                </div>
+                <div class="form-group">
+                    <label for="profileName">Full Name</label>
+                    <input id="profileName" type="text" value="${(existingUser.name || currentUser.name || '').replace(/"/g, '&quot;')}" required>
+                </div>
+                <div class="form-group">
+                    <label for="profileEmail">Email Address</label>
+                    <input id="profileEmail" type="email" value="${(currentUser.email || '').replace(/"/g, '&quot;')}" required>
+                </div>
+                <div class="form-group">
+                    <label for="profilePassword">New Password</label>
+                    <input id="profilePassword" type="password" placeholder="Leave blank to keep current password">
+                </div>
+                <div class="form-group">
+                    <label for="profileImage">Profile Picture</label>
+                    <input id="profileImage" type="file" accept="image/*">
+                </div>
+            </div>
+            <div class="logout-modal-actions">
+                <button type="button" class="btn btn-secondary save-profile">Save</button>
+                <button type="button" class="btn btn-primary cancel-profile">Cancel</button>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    const fileInput = document.getElementById('profileImage');
+    const avatarPreviewEl = document.getElementById('profileAvatarPreview');
+
+    fileInput.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const imageData = e.target.result;
+            avatarPreviewEl.style.backgroundImage = `url('${imageData}')`;
+            avatarPreviewEl.style.backgroundSize = 'cover';
+            avatarPreviewEl.style.backgroundPosition = 'center';
+            avatarPreviewEl.textContent = '';
+            avatarPreviewEl.dataset.avatar = imageData;
+        };
+        reader.readAsDataURL(file);
+    });
+
+    const saveButton = modal.querySelector('.save-profile');
+    const cancelButton = modal.querySelector('.cancel-profile');
+
+    saveButton.addEventListener('click', () => {
+        const name = document.getElementById('profileName').value.trim();
+        const email = document.getElementById('profileEmail').value.trim();
+        const password = document.getElementById('profilePassword').value.trim();
+        const avatarData = avatarPreviewEl.dataset.avatar || avatarPreview || '';
+
+        if (!name || !email) {
+            alert('Please fill in your name and email.');
+            return;
+        }
+
+        if (!isValidEmail(email)) {
+            alert('Please enter a valid email address.');
+            return;
+        }
+
+        const originalEmail = currentUser.email;
+        const sanitizedPassword = password || existingUser.password || '';
+
+        if (email !== originalEmail && users[email]) {
+            alert('This email is already registered to another account.');
+            return;
+        }
+
+        if (originalEmail !== email) {
+            delete users[originalEmail];
+        }
+
+        users[email] = {
+            name: name,
+            email: email,
+            password: sanitizedPassword,
+            avatar: avatarData,
+            createdDate: existingUser.createdDate || new Date().toISOString()
+        };
+
+        const updatedCurrentUser = {
+            email: email,
+            name: name,
+            avatar: avatarData
+        };
+
+        localStorage.setItem('users', JSON.stringify(users));
+        localStorage.setItem('currentUser', JSON.stringify(updatedCurrentUser));
+
+        const userNameElement = document.getElementById('userName');
+        if (userNameElement) {
+            userNameElement.textContent = name;
+        }
+
+        const userAvatarElement = document.getElementById('userAvatar');
+        if (userAvatarElement) {
+            if (avatarData) {
+                userAvatarElement.style.backgroundImage = `url('${avatarData}')`;
+                userAvatarElement.style.backgroundSize = 'cover';
+                userAvatarElement.style.backgroundPosition = 'center';
+                userAvatarElement.textContent = '';
+            } else {
+                userAvatarElement.style.backgroundImage = 'none';
+                userAvatarElement.textContent = '👤';
+            }
+        }
+
+        modal.remove();
+        alert('Profile updated successfully.');
+    });
+
+    cancelButton.addEventListener('click', () => {
+        modal.remove();
+    });
 }
 
 window.addEventListener('DOMContentLoaded', checkAuth);

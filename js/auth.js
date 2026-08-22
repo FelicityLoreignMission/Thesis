@@ -43,7 +43,8 @@ function handleLogin(event) {
     // Successful login
     localStorage.setItem('currentUser', JSON.stringify({
         email: email,
-        name: users[email].name
+        name: users[email].name,
+        avatar: users[email].avatar || ''
     }));
 
     alert('Login successful! Redirecting to dashboard...');

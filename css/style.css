@@ -364,7 +364,7 @@ a {
 
 .sidebar {
     width: 250px;
-    background: linear-gradient(180deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+    background: var(--bg-light);
     color: var(--bg-white);
     padding: 20px;
     overflow-y: auto;
@@ -385,6 +385,7 @@ a {
 .sidebar-header h1 {
     font-size: 1.8em;
     font-weight: 700;
+    color: #ffffff;
 }
 
 .nav-menu {
@@ -480,6 +481,7 @@ a {
     display: grid;
     grid-template-columns: 1fr;
     gap: 30px;
+    color: #ffffff;
 }
 
 .progress-section {
@@ -490,7 +492,7 @@ a {
 }
 
 .progress-section h3 {
-    color: var(--primary-color);
+    color: #ffffff;
     margin-bottom: 20px;
     font-size: 1.5em;
 }
@@ -511,7 +513,7 @@ a {
 
 .progress-label {
     font-weight: 600;
-    color: var(--text-dark);
+    color: #ffffff;
 }
 
 .progress-percent {
@@ -550,7 +552,7 @@ a {
 }
 
 .stat-label {
-    color: var(--text-light);
+    color: #ffffff;
     font-size: 0.9em;
     margin-bottom: 5px;
 }
@@ -570,7 +572,7 @@ a {
 }
 
 .quick-access h3 {
-    color: var(--primary-color);
+    color: #ffffff;
     margin-bottom: 20px;
     font-size: 1.5em;
 }
@@ -583,7 +585,7 @@ a {
 
 .quick-card {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
-    color: var(--bg-white);
+    color: #ffffff;
     padding: 25px;
     border-radius: 10px;
     cursor: pointer;
@@ -620,7 +622,7 @@ a {
 }
 
 .recent-activity h3 {
-    color: var(--primary-color);
+    color: #ffffff;
     margin-bottom: 20px;
     font-size: 1.5em;
 }
@@ -653,11 +655,11 @@ a {
 .activity-title {
     font-weight: 600;
     margin-bottom: 5px;
-    color: var(--text-dark);
+    color: #ffffff;
 }
 
 .activity-time {
-    color: var(--text-light);
+    color: #ffffff;
     font-size: 0.9em;
 }
 

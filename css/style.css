@@ -31,6 +31,38 @@ body {
     line-height: 1.6;
 }
 
+.app-page {
+    --primary-color: #3f8edb;
+    --primary-dark: #1f5f9f;
+    --primary-light: #8fc8f5;
+    --text-dark: #000000;
+    --text-light: #333333;
+    --bg-light: #f4f6f8;
+    --bg-white: rgba(255, 255, 255, 0.68);
+    --panel-bg: rgba(255, 255, 255, 0.68);
+    --border-color: #d9dee5;
+    --shadow: 0 10px 24px rgba(31, 41, 55, 0.1);
+    --shadow-lg: 0 16px 32px rgba(31, 41, 55, 0.14);
+    color: #000000;
+    background-color: #f4f6f8;
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(232, 237, 242, 0.7));
+}
+
+.app-page .btn-primary {
+    background: linear-gradient(135deg, #6eb5e8 0%, #3f8edb 100%);
+    color: #000000;
+    box-shadow: 0 12px 24px rgba(63, 142, 219, 0.25);
+}
+
+.app-page .profile-avatar-preview {
+    background: linear-gradient(135deg, #3f8edb 0%, #8fc8f5 100%);
+}
+
+.app-page .profile-form input:focus {
+    border-color: rgba(63, 142, 219, 0.8);
+    box-shadow: 0 0 0 3px rgba(63, 142, 219, 0.15);
+}
+
 a {
     text-decoration: none;
     color: inherit;
@@ -375,6 +407,17 @@ a {
     flex-direction: column;
 }
 
+.app-page .sidebar {
+    background: rgba(255, 255, 255, 0.45);
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(12px);
+}
+
+.app-page .main-content,
+.app-page .dashboard-content {
+    background: transparent;
+}
+
 .sidebar-header {
     margin-bottom: 40px;
     text-align: center;
@@ -386,6 +429,28 @@ a {
     font-size: 1.8em;
     font-weight: 700;
     color: #ffffff;
+}
+
+.app-page .sidebar-header h1,
+.app-page .nav-link,
+.app-page .dashboard-content,
+.app-page .progress-section h3,
+.app-page .progress-label,
+.app-page .stat-label,
+.app-page .quick-access h3,
+.app-page .recent-activity h3,
+.app-page .activity-title,
+.app-page .activity-time {
+    color: #000000;
+}
+
+.app-page .sidebar-header {
+    border-bottom-color: #d9dee5;
+}
+
+.app-page .nav-link:hover,
+.app-page .nav-link.active {
+    background: #e8edf2;
 }
 
 .nav-menu {
@@ -591,6 +656,10 @@ a {
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: center;
+}
+
+.app-page .quick-card {
+    color: #000000;
 }
 
 .quick-card:hover {
@@ -1200,6 +1269,58 @@ a {
 
 .cert-estimate strong {
     color: var(--primary-color);
+}
+
+/* ==================== FOOTER ==================== */
+.site-footer {
+    margin-top: 30px;
+    padding: 22px 10px;
+    text-align: center;
+    color: var(--text-light);
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 20px;
+    margin-bottom: 12px;
+}
+
+.contact-link {
+    color: var(--primary-dark);
+    font-size: 0.9em;
+}
+
+.email-icon {
+    color: var(--primary-color);
+    margin-right: 4px;
+}
+
+.contact-link:hover {
+    color: var(--primary-color);
+}
+
+.footer-links a {
+    color: var(--primary-dark);
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+}
+
+.site-footer p {
+    color: var(--text-light);
+    font-size: 0.9em;
 }
 
 /* ==================== RESPONSIVE DESIGN ==================== */

@@ -15,7 +15,8 @@ function checkAuth() {
     const currentUser = localStorage.getItem('currentUser');
 
     if (!currentUser) {
-        if (!window.location.pathname.endsWith('index.html')) {
+        const isPublicPage = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('about.html');
+        if (!isPublicPage) {
             window.location.href = 'index.html';
         }
         return;
@@ -379,16 +380,6 @@ function retakeAssessment(assessmentId) {
     }
 }
 
-// ==================== CERTIFICATES FUNCTIONS ====================
-
-function viewCertificate(certId) {
-    alert(`Displaying Certificate ${certId}\n(Full certificate view opening...)`);
-}
-
-function downloadCertificate(certId) {
-    alert(`Downloading Certificate ${certId} as PDF\n(File download starting...)`);
-}
-
 // ==================== UTILITY FUNCTIONS ====================
 
 // Format date
@@ -471,3 +462,45 @@ document.documentElement.style.scrollBehavior = 'smooth';
 
 // Log initialization
 console.log('EduLearn platform initialized successfully');
+
+const researchers = [
+    { id: 'felicity', name: 'Felicity Loreign Mission', age: '21', sex: 'Female', address: 'Manila City | BSIE - ICT', role: 'Web Developer' },
+    { id: 'micaela', name: 'Micaela Lopez', age: '21', sex: 'Female', address: 'Quezon City | BSIE - ICT', role: 'Thesis Paper' },
+    { id: 'nadenalthea', name: 'Naden Althea Eustaquio', age: '22', sex: 'Female', address: 'Manila City | BSIE - ICT', role: 'Web Developer' },
+    { id: 'jennyrose', name: 'Jenny Rose Bayubay', age: '22', sex: 'Female', address: 'Las Piñas City | BSIE - ICT', role: 'Thesis Paper' }
+];
+
+window.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('researcherModal');
+    if (!modal) return;
+
+    const closeButton = modal.querySelector('.researcher-modal-close');
+    const closeModal = () => {
+        modal.hidden = true;
+        document.body.style.overflow = '';
+    };
+
+    document.querySelectorAll('[data-researcher-id]').forEach((card) => {
+        card.addEventListener('click', () => {
+            const researcher = researchers.find(({ id }) => id === card.dataset.researcherId);
+            if (!researcher) return;
+
+            document.getElementById('researcherModalName').textContent = researcher.name;
+            document.getElementById('researcherAge').textContent = researcher.age;
+            document.getElementById('researcherSex').textContent = researcher.sex;
+            document.getElementById('researcherAddress').textContent = researcher.address;
+            document.getElementById('researcherRole').textContent = researcher.role;
+            modal.hidden = false;
+            document.body.style.overflow = 'hidden';
+            closeButton.focus();
+        });
+    });
+
+    closeButton.addEventListener('click', closeModal);
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !modal.hidden) closeModal();
+    });
+});

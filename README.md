@@ -1,6 +1,6 @@
 # EduLearn - Interactive Learning Platform
 
-A modern, responsive web-based learning platform featuring user authentication, interactive modules, activities, resources, assessments, and certification tracking.
+A modern, responsive web-based learning platform featuring user authentication, interactive modules, activities, resources, assessments, and badge tracking.
 
 ## 📋 Project Structure
 
@@ -12,7 +12,7 @@ EduLearn/
 ├── activities.html         # Interactive activities and practice
 ├── resources.html          # Study materials and downloadable resources
 ├── assessments.html        # Quizzes and assessments
-├── certificates.html       # Certificates and achievements/badges
+├── badges.html             # Badges and achievements
 ├── css/
 │   └── style.css          # All styling (responsive design)
 ├── js/
@@ -74,13 +74,11 @@ EduLearn/
 - Retake options
 - Certification path tracking
 
-### 7. **Certificates & Achievements**
-- Completion certificates
+### 7. **Badges & Achievements**
 - Badge system with unlock conditions
 - 5+ earned badges
 - Achievement progress tracking
 - Certification path with milestones
-- Download certificates as PDF
 
 ### 8. **Responsive Design**
 - Mobile-first approach
@@ -164,11 +162,9 @@ You can create your own account, but here's a test account you can use:
 - Review your answers
 - Retake assessments to improve your score
 
-### Certificates
-- View earned certificates
+### Badges
 - Track badge achievements
 - Monitor your path to certification
-- Download certificates for your records
 
 ## 🔧 Customization
 
@@ -307,7 +303,7 @@ Designed and built as an educational learning platform demonstration.
 | `activities.html` | Interactive activities and exercises |
 | `resources.html` | Study materials and downloadable content |
 | `assessments.html` | Quizzes and exam management |
-| `certificates.html` | Certificates and badge tracking |
+| `badges.html` | Badge and achievement tracking |
 | `css/style.css` | Complete responsive styling |
 | `js/auth.js` | User authentication logic |
 | `js/script.js` | Page functionality and interactions |

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>About EduLearn</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="app-page">
+	<div class="app-wrapper">
+		<nav class="sidebar" aria-label="Main navigation">
+			<div class="sidebar-header"><h1>EduLearn</h1></div>
+			<ul class="nav-menu">
+				<li><a href="dashboard.html" class="nav-link"><span class="icon">📊</span>Dashboard</a></li>
+				<li><a href="modules.html" class="nav-link"><span class="icon">📚</span>Learning Modules</a></li>
+				<li><a href="activities.html" class="nav-link"><span class="icon">🎮</span>Interactive Activities</a></li>
+				<li><a href="resources.html" class="nav-link"><span class="icon">📁</span>Resources</a></li>
+				<li><a href="assessments.html" class="nav-link"><span class="icon">✏️</span>Assessments</a></li>
+				<li><a href="badges.html" class="nav-link"><span class="icon">🏅</span>Badges</a></li>
+				<li><a href="about.html" class="nav-link active"><span class="icon">ℹ️</span>About</a></li>
+			</ul>
+			<div class="sidebar-footer"><button class="btn btn-logout" onclick="handleLogout()">Logout</button></div>
+		</nav>
+		<main class="main-content">
+			<header class="top-header">
+				<div class="header-info">
+					<h2>About EduLearn</h2>
+					<p>Learn more about the study and the researchers behind the project.</p>
+				</div>
+			</header>
+			<div class="about-content">
+				<section class="about-section" aria-labelledby="background-heading">
+					<h3 id="background-heading">Background of the Study</h3>
+					<div class="about-card"><p>[Background of the Study content goes here — to be finalized]</p></div>
+				</section>
+				<section class="about-section" aria-labelledby="researchers-heading">
+					<h3 id="researchers-heading">Meet the Researchers</h3>
+					<div class="researcher-grid">
+						<button class="researcher-card" type="button" data-researcher-id="felicity"><span class="researcher-avatar">FL</span><span class="researcher-name">Felicity Loreign Mission</span><span class="researcher-role">Researcher</span></button>
+						<button class="researcher-card" type="button" data-researcher-id="micaela"><span class="researcher-avatar">ML</span><span class="researcher-name">Micaela Lopez</span><span class="researcher-role">Researcher</span></button>
+						<button class="researcher-card" type="button" data-researcher-id="nadenalthea"><span class="researcher-avatar">NE</span><span class="researcher-name">Nadenalthea Eustaquio</span><span class="researcher-role">Researcher</span></button>
+						<button class="researcher-card" type="button" data-researcher-id="jennyrose"><span class="researcher-avatar">JB</span><span class="researcher-name">Jennyrose Bayubay</span><span class="researcher-role">Researcher</span></button>
+					</div>
+				</section>
+			</div>
+		</main>
+	</div>
+	<div class="researcher-modal-overlay" id="researcherModal" hidden>
+		<div class="researcher-modal" role="dialog" aria-modal="true" aria-labelledby="researcherModalName">
+			<button class="researcher-modal-close" type="button" aria-label="Close researcher details">&times;</button>
+			<h3 id="researcherModalName"></h3>
+			<dl class="researcher-details">
+				<div><dt>Age</dt><dd id="researcherAge"></dd></div>
+				<div><dt>Sex</dt><dd id="researcherSex"></dd></div>
+				<div><dt>Address / City / Course</dt><dd id="researcherAddress"></dd></div>
+				<div><dt>Role in the Project</dt><dd id="researcherRole"></dd></div>
+			</dl>
+		</div>
+	</div>
+	<script src="js/script.js"></script>
+</body>
+</html>

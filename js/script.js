@@ -43,6 +43,33 @@ function checkAuth() {
     }
 }
 
+function initializeMobileNavigation() {
+    const sidebar = document.querySelector('.sidebar');
+    const menuButton = document.querySelector('.mobile-menu-toggle');
+    if (!sidebar || !menuButton) return;
+
+    const overlay = document.createElement('div');
+    overlay.className = 'sidebar-overlay';
+    document.body.appendChild(overlay);
+
+    const closeMenu = () => {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Open navigation');
+    };
+
+    menuButton.addEventListener('click', () => {
+        const isOpen = sidebar.classList.toggle('active');
+        overlay.classList.toggle('active', isOpen);
+        menuButton.setAttribute('aria-expanded', String(isOpen));
+        menuButton.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+    });
+
+    overlay.addEventListener('click', closeMenu);
+    sidebar.querySelectorAll('.nav-link').forEach((link) => link.addEventListener('click', closeMenu));
+}
+
 // Show confirmation modal for logout
 function showLogoutPrompt() {
     const existingModal = document.getElementById('logoutModal');
@@ -233,7 +260,10 @@ function openProfileModal() {
     });
 }
 
-window.addEventListener('DOMContentLoaded', checkAuth);
+window.addEventListener('DOMContentLoaded', () => {
+    checkAuth();
+    initializeMobileNavigation();
+});
 
 // ==================== DASHBOARD FUNCTIONS ====================
 
